@@ -1,0 +1,78 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        /* Fullscreen styles */
+        body, html {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            overflow: hidden;
+        }
+
+        video {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            object-fit: cover;
+        }
+
+        /* Transition effect */
+        .transition {
+            transition: opacity 0.01s ease-in;
+            opacity: 0.1;
+        }
+
+        .fade-out {
+            opacity: 0.1;
+        }
+    </style>
+</head>
+<body>
+    <video id="videoPlayer" src="https://cdn.pixabay.com/video/2017/12/05/13232-246463976_large.mp4" autoplay muted></video>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const video = document.getElementById('videoPlayer');
+
+            video.addEventListener('ended', () => {
+                // Add transition effect
+                document.body.classList.add('transition');
+                
+                // After the transition effect is applied, redirect to another page
+                setTimeout(() => {
+                    window.location.href = 'home.html'; // Change to your desired page
+                }, 1000); // Time should match the CSS transition duration
+            });
+        });
+    </script>
+    <script type="module">
+        // Import the functions you need from the SDKs you need
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.14.0/firebase-app.js";
+        import { getAnalytics } from "https://www.gstatic.com/firebasejs/10.14.0/firebase-analytics.js";
+        // TODO: Add SDKs for Firebase products that you want to use
+        // https://firebase.google.com/docs/web/setup#available-libraries
+      
+        // Your web app's Firebase configuration
+        // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+        const firebaseConfig = {
+          apiKey: "AIzaSyBwm_LDKIl86tv1PUCHRlw7gER78vHocLI",
+          authDomain: "dpsdigits2024.firebaseapp.com",
+          projectId: "dpsdigits2024",
+          storageBucket: "dpsdigits2024.appspot.com",
+          messagingSenderId: "425513543236",
+          appId: "1:425513543236:web:ef264d64d5bcbbd10b7e11",
+          measurementId: "G-6VNGR8MG4X"
+        };
+      
+        // Initialize Firebase
+        const app = initializeApp(firebaseConfig);
+        const analytics = getAnalytics(app);
+      </script>
+</body>
+</html>
